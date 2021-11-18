@@ -1,13 +1,13 @@
 import { NgModule } from "@angular/core";
-import { WelcomeComponent } from "./components/welcome/welcome.component";
+import { NavBarComponent } from "./components/navbar/navbar.component";
 
 @NgModule({
 	declarations: [
-		WelcomeComponent,
+		NavBarComponent,
 	],
 	providers: [],
     exports: [
-        WelcomeComponent
+        NavBarComponent
     ]
 })
 export class ThemeModule { }
