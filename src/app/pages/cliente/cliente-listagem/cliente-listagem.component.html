@@ -14,7 +14,11 @@
             <td>{{ cliente.email }}</td>
             <td>{{ cliente.telefone }}</td>
             <td>{{ cliente.status }}</td>
-            <td>Editar | Excluir</td>
+            <td>
+                <a class="form-check-inline" [routerLink]="['/clientes/detalhes', cliente.id]">Detalhes</a>
+                <a class="form-check-inline" [routerLink]="['/clientes/editar', cliente.id]">Editar</a>
+                <a class="form-check-inline" routerLink="" (click)="excluir(cliente.id)">Excluir</a>
+            </td>
         </tr>
     </tbody>
 

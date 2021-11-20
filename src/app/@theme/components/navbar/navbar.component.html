@@ -1,10 +1,10 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/pages/listagem">Clientes</a>
+      <a class="navbar-brand" [routerLink]="['listagem']">Clientes</a>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-link active" aria-current="page" href="/pages/listagem">Listagem</a>
-          <a class="nav-link active" href="#">Novo Cliente</a>
+          <a class="nav-link" [routerLink]="['listagem']" routerLinkActive="active">Listagem</a>
+          <a class="nav-link" [routerLink]="['novo']" routerLinkActive="active">Novo Cliente</a>
         </div>
       </div>
     </div>
