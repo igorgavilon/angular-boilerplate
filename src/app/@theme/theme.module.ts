@@ -1,13 +1,17 @@
 import { NgModule } from "@angular/core";
-import { WelcomeComponent } from "./components/welcome/welcome.component";
+import { RouterModule } from "@angular/router";
+import { NavBarComponent } from "./components/navbar/navbar.component";
 
 @NgModule({
+    imports: [
+        RouterModule,
+    ],
 	declarations: [
-		WelcomeComponent,
+		NavBarComponent,
 	],
 	providers: [],
     exports: [
-        WelcomeComponent
+        NavBarComponent,
     ]
 })
 export class ThemeModule { }

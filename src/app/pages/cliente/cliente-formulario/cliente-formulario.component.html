@@ -1,0 +1,67 @@
+<h2>Editar Informações do Cliente</h2>
+<hr/>
+
+<form #clienteForm="ngForm">
+    <input type="number" [ngModel]="_cliente.id" name="id" hidden>
+    <div class="form-group row mb-2">
+        <label class="col-sm-2 col-form-label">Nome:</label>
+        <div class="col-sm-10">
+            <input [ngModel]="_cliente.nome" required
+                    name="nome"
+                    #clienteNome="ngModel"
+                    [ngClass]="{'is-invalid': clienteNome.invalid && clienteNome.touched}"
+                    class="form-control" [readonly]="_formReadOnly">
+            <div class="invalid-feedback">
+                <span>Nome é obrigatório</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row mb-2">
+        <label class="col-sm-2 col-form-label">E-mail:</label>
+        <div class="col-sm-10">
+            <input [ngModel]="_cliente.email" required
+                    name="email"
+                    #clienteEmail="ngModel"
+                    [ngClass]="{'is-invalid': clienteEmail.invalid && clienteNome.touched}"
+                    class="form-control" email [readonly]="_formReadOnly">
+            <div class="invalid-feedback">
+                <span>E-mail é obrigatório</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row mb-2">
+        <label class="col-sm-2 col-form-label">Telefone:</label>
+        <div class="col-sm-10">
+            <input [ngModel]="_cliente.telefone" required
+                    name="telefone"
+                    #clienteTelefone="ngModel"
+                    [ngClass]="{'is-invalid': clienteTelefone.invalid && clienteNome.touched}"
+                    class="form-control" [readonly]="_formReadOnly">
+            <div class="invalid-feedback">
+                <span>Telefone é obrigatório</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row mb-2">
+        <label class="col-sm-2 col-form-label">Status:</label>
+        <div class="col-sm-10">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" [ngModel]="_cliente.status"
+                        type="radio" name="status" value="ATIVO" >
+                <label class="form-check-label" >ativo</label>
+            </div>
+            <div class="form-check form-check-inline" >
+                <input class="form-check-input" [ngModel]="_cliente.status"
+                        type="radio" name="status" value="INATIVO" [disabled]="_formReadOnly">
+                <label class="form-check-label" >inativo</label>
+            </div>
+        </div>
+    </div>
+
+    <button [hidden]="_formReadOnly" [disabled]="clienteForm.invalid || clienteForm.pristine" (click)="salvar(clienteForm)" class="btn btn-primary mr-2">Salvar</button>
+    <button [routerLink]="['listagem']" class="btn btn-secondary">Voltar</button>
+
+</form>
