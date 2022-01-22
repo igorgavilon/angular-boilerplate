@@ -9,9 +9,7 @@ import ICliente from "../common/interfaces/cliente.interface";
     providedIn: 'root'
 })
 export class ClienteService {
-    //define um parâmetro do tipo Router para o uso da função navigate()
-    constructor(private rota: Router) { }
-
+    
     /**
      * função que retorna todos os clientes salvos na base de dados
      * @returns um array de objetos do tipo ICliente
@@ -19,12 +17,8 @@ export class ClienteService {
     public retornaTodosClientes(): ICliente[] {
         //realiza a leitura dos dados do localstorage
         const dadosLocalStorage: string | null = localStorage.getItem('clientesArray');
-        let arrayClientes: ICliente[] = [];
-        //se já houver algum dado no localstorage, salva no array que será retornado
-        if(dadosLocalStorage !== null) {
-            arrayClientes = JSON.parse(dadosLocalStorage);
-        }
-        return arrayClientes;
+        //retorna os dados dos clientes em forma de array
+        return dadosLocalStorage ? JSON.parse(dadosLocalStorage) : [];
     }
 
     /**
@@ -38,7 +32,7 @@ export class ClienteService {
     }
 
     /**
-     * função que salva os dados do cliente (novo ou jpá existente) na base de dados
+     * função que salva os dados do cliente (novo ou já existente) na base de dados
      */
     public salvar(cliente: ICliente): void {
         const arrayClientes: ICliente[]= this.retornaTodosClientes();
@@ -70,8 +64,6 @@ export class ClienteService {
 
         localStorage.setItem('clientesArray', JSON.stringify(arrayClientes));
 
-        //volta para a tela de listagem do cliente
-        this.irRotaListagemCliente();
     }
 
     /**
@@ -93,10 +85,4 @@ export class ClienteService {
         }
     }
 
-    /**
-     * função que invoca a rota de listagem de clientes
-     */
-    public irRotaListagemCliente(): void {
-        this.rota.navigate(['/clientes/listagem']);
-    }
 }
